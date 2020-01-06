@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                     anchorNode.setParent(arFragment.getArSceneView().getScene());
 
                     transformableNode = new TransformableNode(arFragment.getTransformationSystem());
-                    transformableNode.getScaleController().setMinScale(0.09f);
+                    transformableNode.getScaleController().setMinScale(0.03f);
                     transformableNode.getScaleController().setMaxScale(0.1f);
                     transformableNode.setParent(anchorNode);
                     transformableNode.setRenderable(animationCrab);
@@ -71,14 +71,17 @@ public class MainActivity extends AppCompatActivity {
                 {
                     if(btnAnim.isEnabled())
                     {
-                        btnAnim.setBackgroundTintList(ContextCompat.getColorStateList(MainActivity.this, R.color.colorAccent));
+                        btnAnim.setBackgroundTintList(ContextCompat.getColorStateList(MainActivity.this, R.color.colorDisabled));
                         btnAnim.setEnabled(false);
                     }
+                }else
+                {
+                    btnAnim.setEnabled(true);
+                    btnAnim.setBackgroundTintList(ContextCompat.getColorStateList(MainActivity.this, R.color.colorAccent));
                 }
             }
         });
 
-        btnAnim.setEnabled(false);
         btnAnim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -92,6 +95,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        setupModel();
     }
     private void setupModel()
     {
